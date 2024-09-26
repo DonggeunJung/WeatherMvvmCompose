@@ -1,9 +1,9 @@
 package com.example.weathermvvmcompose.domain
 
 import android.util.Log
-import com.example.weathermvvmcompose.data.State.State
-import com.example.weathermvvmcompose.data.State.StateApi
-import com.example.weathermvvmcompose.data.State.StateDatabase
+import com.example.weathermvvmcompose.data.state.State
+import com.example.weathermvvmcompose.data.state.StateApi
+import com.example.weathermvvmcompose.data.state.StateDatabase
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async

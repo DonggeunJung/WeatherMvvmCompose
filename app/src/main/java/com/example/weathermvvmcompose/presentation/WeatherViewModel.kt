@@ -5,7 +5,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.weathermvvmcompose.common.Util
-import com.example.weathermvvmcompose.data.State.State
+import com.example.weathermvvmcompose.data.state.State
 import com.example.weathermvvmcompose.data.weather.Weather
 import com.example.weathermvvmcompose.domain.StateRepository
 import com.example.weathermvvmcompose.domain.WeatherRepository
@@ -43,19 +43,11 @@ class WeatherViewModel @Inject constructor(private val stateRepository: StateRep
             withContext(Dispatchers.Main) {
                 res?.let {
                     _weather.value = it
-                    //savePrefCity(state, city, pref)
                     Util.savePrefCity(state, city)
                 }
             }
         }
     }
-
-    /*private fun savePrefCity(state: String, city: String, pref: SharedPreferences) {
-        val editor = pref.edit()
-        editor.putString(KEY_STATE, state)
-        editor.putString(KEY_CITY, city)
-        editor.apply()
-    }*/
 
     // Request Weather data by location
     fun reqWeatherLocation(lat: Double, lon: Double) {

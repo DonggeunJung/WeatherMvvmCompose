@@ -1,4 +1,4 @@
-package com.example.weathermvvmcompose.data.State
+package com.example.weathermvvmcompose.data.state
 
 import com.example.weathermvvmcompose.common.Util
 import retrofit2.http.GET

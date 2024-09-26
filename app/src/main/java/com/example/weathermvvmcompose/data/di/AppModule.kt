@@ -1,8 +1,8 @@
 package com.example.weathermvvmcompose.data.di
 
 import android.content.Context
-import com.example.weathermvvmcompose.data.State.StateApi
-import com.example.weathermvvmcompose.data.State.StateDatabase
+import com.example.weathermvvmcompose.data.state.StateApi
+import com.example.weathermvvmcompose.data.state.StateDatabase
 import com.example.weathermvvmcompose.data.weather.WeatherApi
 import dagger.Module
 import dagger.Provides

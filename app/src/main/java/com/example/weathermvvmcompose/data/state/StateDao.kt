@@ -1,4 +1,4 @@
-package com.example.weathermvvmcompose.data.State
+package com.example.weathermvvmcompose.data.state
 
 import androidx.room.Dao
 import androidx.room.Delete

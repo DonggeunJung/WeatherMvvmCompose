@@ -27,9 +27,6 @@ object Util {
         }.asConverterFactory("application/json".toMediaType())) //Here we are using the GsonConverterFactory to directly convert json data to object
         .build()
 
-    private const val AES_KEY = "aesEncryptionKey"
-    private const val INIT_VECTOR = "encryptionIntVec"
-
     fun decrypt(value: String?): String? {
         try {
             val iv = IvParameterSpec(INIT_VECTOR.toByteArray(charset("UTF-8")))
@@ -61,6 +58,8 @@ object Util {
         return Pair(state, city)
     }
 
+    private const val AES_KEY = "aesEncryptionKey"
+    private const val INIT_VECTOR = "encryptionIntVec"
     const val KEY_STATE = "state"
     const val KEY_CITY = "city"
 }

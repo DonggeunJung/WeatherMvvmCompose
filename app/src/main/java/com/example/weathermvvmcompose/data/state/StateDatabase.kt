@@ -1,4 +1,4 @@
-package com.example.weathermvvmcompose.data.State
+package com.example.weathermvvmcompose.data.state
 
 import android.content.Context
 import androidx.room.Database
