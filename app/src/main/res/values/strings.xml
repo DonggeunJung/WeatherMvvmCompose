@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeatherMvvmCompose</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="fahrenheit_unit">°F</string>
+    <string name="country_code">US</string>
+    <string name="visibility">Visibility</string>
+    <string name="km">km</string>
+    <string name="humidity">Humidity</string>
+    <string name="percent">%</string>
+    <string name="press_unit">hPa</string>
+    <string name="wind_unit">m/s</string>
+</resources>
