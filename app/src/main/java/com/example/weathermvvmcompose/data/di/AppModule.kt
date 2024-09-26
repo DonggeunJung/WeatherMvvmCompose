@@ -17,6 +17,12 @@ object AppModule {
 
     @Singleton
     @Provides
+    fun provideContext(@ApplicationContext context: Context): Context {
+        return context
+    }
+
+    @Singleton
+    @Provides
     fun provideStateDatabase(@ApplicationContext context: Context): StateDatabase {
         return StateDatabase.getInstance(context)
     }

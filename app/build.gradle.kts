@@ -97,9 +97,4 @@ dependencies {
     implementation("androidx.room:room-runtime-android:${roomVersion}-alpha06")
     kapt("androidx.room:room-compiler:${roomVersion}-alpha06")
 
-    // Glide library
-    val glideVersion = "4.13.2"
-    implementation("com.github.bumptech.glide:glide:$glideVersion")
-    kapt("com.github.bumptech.glide:compiler:$glideVersion")
-
 }

@@ -1,9 +1,9 @@
 package com.example.weathermvvmcompose.data.weather
 
-import android.content.Context
 import androidx.annotation.VisibleForTesting
 import com.example.weathermvvmcompose.R
 import com.example.weathermvvmcompose.common.Util
+import com.example.weathermvvmcompose.presentation.App
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -14,23 +14,23 @@ data class Weather(val weather: List<WeatherWeather>, val main: WeatherMain, var
         else "https://openweathermap.org/img/wn/${weather[0].icon}.png"
     }
 
-    fun minMax(context: Context): String {
+    fun minMax(): String {
         val max = cToF(main.temp_max)
         val min = cToF(main.temp_min)
-        val unit = context.getString(R.string.fahrenheit_unit)
+        val unit = App.context.getString(R.string.fahrenheit_unit)
         return "$max / $min${unit}"
     }
 
-    fun cityName(context: Context): String {
-        val code = context.getString(R.string.country_code)
+    fun cityName(): String {
+        val code = App.context.getString(R.string.country_code)
         return "${this.name}, $code"
     }
 
-    fun visibility(context: Context): String {
+    fun visibility(): String {
         var km = this.visibility.toDouble() / 1000
         km = Util.roundDigit(km, 1)
-        val title = context.getString(R.string.visibility)
-        val unit = context.getString(R.string.km)
+        val title = App.context.getString(R.string.visibility)
+        val unit = App.context.getString(R.string.km)
         return "$title: ${km}${unit}"
     }
 
@@ -39,24 +39,24 @@ data class Weather(val weather: List<WeatherWeather>, val main: WeatherMain, var
         return weather[0].description[0].uppercase() + weather[0].description.substring(1)
     }
 
-    fun humidity(context: Context): String {
-        val title = context.getString(R.string.humidity)
-        val unit = context.getString(R.string.percent)
+    fun humidity(): String {
+        val title = App.context.getString(R.string.humidity)
+        val unit = App.context.getString(R.string.percent)
         return "$title: ${this.main.humidity}${unit}"
     }
 
-    fun pressure(context: Context): String {
-        val unit = context.getString(R.string.press_unit)
+    fun pressure(): String {
+        val unit = App.context.getString(R.string.press_unit)
         return "${this.main.pressure}${unit}"
     }
 
-    fun tempFahrenheit(context: Context): String {
-        val unit = context.getString(R.string.fahrenheit_unit)
+    fun tempFahrenheit(): String {
+        val unit = App.context.getString(R.string.fahrenheit_unit)
         return "${cToF(main.temp)}${unit}"
     }
 
-    fun feelsLikeFahrenheit(context: Context): String {
-        val unit = context.getString(R.string.fahrenheit_unit)
+    fun feelsLikeFahrenheit(): String {
+        val unit = App.context.getString(R.string.fahrenheit_unit)
         return "${cToF(main.feels_like)}${unit}"
     }
 
@@ -65,9 +65,9 @@ data class Weather(val weather: List<WeatherWeather>, val main: WeatherMain, var
         return ((cel - 273.15) * 9.0 / 5.0).toInt() + 32
     }
 
-    fun windDescription(context: Context): String {
+    fun windDescription(): String {
         val v = Util.roundDigit(this.wind.speed, 1).toString()
-        val unit = context.getString(R.string.wind_unit)
+        val unit = App.context.getString(R.string.wind_unit)
         val windDir = windDir()
         return "${v}${unit} $windDir"
     }

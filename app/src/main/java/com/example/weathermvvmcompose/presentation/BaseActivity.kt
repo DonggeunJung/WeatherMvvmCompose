@@ -7,10 +7,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 open class BaseActivity: ComponentActivity() {
-    protected lateinit var pref: SharedPreferences
+    //protected lateinit var pref: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        pref = getSharedPreferences("setup", MODE_PRIVATE)
+        //pref = getSharedPreferences("setup", MODE_PRIVATE)
     }
 }

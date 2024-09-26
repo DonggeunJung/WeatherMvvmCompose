@@ -1,13 +1,10 @@
 package com.example.weathermvvmcompose.common
 
-import android.content.Context
+import android.app.Activity.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.util.Base64
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.ImageView
-import com.bumptech.glide.Glide
+import com.example.weathermvvmcompose.presentation.App
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
-import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
@@ -47,16 +44,23 @@ object Util {
         return null
     }
 
-    fun hideKeypad(@ApplicationContext context: Context, editText: EditText) {
-        val imm: InputMethodManager = context.getSystemService (Context.INPUT_METHOD_SERVICE) as InputMethodManager
-        imm.hideSoftInputFromWindow(editText.windowToken, 0)
+    fun buildSP(): SharedPreferences = App.context.getSharedPreferences("setup", MODE_PRIVATE)
+
+    fun savePrefCity(state: String, city: String) {
+        val pref: SharedPreferences = buildSP()
+        val editor = pref.edit()
+        editor.putString(KEY_STATE, state)
+        editor.putString(KEY_CITY, city)
+        editor.apply()
     }
 
-    /*@JvmStatic
-    @BindingAdapter("imageUrl")
-    fun loadImage(view: ImageView, url: String?) {
-        url?.let {
-            Glide.with(view.context).load(url).into(view)
-        }
-    }*/
+    fun readPrefCity(): Pair<String,String> {
+        val pref: SharedPreferences = buildSP()
+        val state = pref.getString(KEY_STATE, "") ?: ""
+        val city = pref.getString(KEY_CITY, "") ?: ""
+        return Pair(state, city)
+    }
+
+    const val KEY_STATE = "state"
+    const val KEY_CITY = "city"
 }
