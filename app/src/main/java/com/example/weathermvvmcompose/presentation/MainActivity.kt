@@ -9,6 +9,7 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.padding
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
 import com.example.weathermvvmcompose.common.RequestPermissionsUtil
 import com.example.weathermvvmcompose.common.Util
@@ -28,7 +29,11 @@ class MainActivity : BaseActivity() {
         enableEdgeToEdge()
         setContent {
             WeatherMvvmComposeTheme {
-                Greeting(vm, modifier = Modifier.padding(1.dp), this)
+                val keyboardCtrl = LocalSoftwareKeyboardController.current
+                Greeting(vm, modifier = Modifier.padding(1.dp)) {
+                    keyboardCtrl?.hide()
+                    vm.reqWeather()
+                }
             }
         }
 
@@ -89,7 +94,7 @@ class MainActivity : BaseActivity() {
             return
         }
 
-        vm.reqWeather(city, state)
+        vm.reqWeather()
     }
 
 }

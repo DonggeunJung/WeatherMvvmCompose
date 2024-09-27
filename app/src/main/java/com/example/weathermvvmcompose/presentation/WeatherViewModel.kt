@@ -36,14 +36,14 @@ class WeatherViewModel @Inject constructor(private val stateRepository: StateRep
     }
 
     // Request Weather data by City name
-    fun reqWeather(city: String, state: String) {
+    fun reqWeather() {
         viewModelScope.launch {
-            val res = weatherRepository.reqWeather("$city,$state")
+            val res = weatherRepository.reqWeather("${city.value},${selState.value}")
 
             withContext(Dispatchers.Main) {
                 res?.let {
                     _weather.value = it
-                    Util.savePrefCity(state, city)
+                    Util.savePrefCity(selState.value, city.value)
                 }
             }
         }

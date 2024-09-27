@@ -35,14 +35,14 @@ import com.example.weathermvvmcompose.data.weather.Weather
 import com.example.weathermvvmcompose.ui.theme.EditBack
 
 @Composable
-fun Greeting(vm : WeatherViewModel, modifier: Modifier = Modifier, context: Context) {
+fun Greeting(vm : WeatherViewModel, modifier: Modifier = Modifier, req:()->Unit) {
 
     Box(modifier = modifier.fillMaxSize()) {
         Column(modifier = modifier
             .fillMaxSize()
             .background(color = Color.White)
             .padding(20.dp)) {
-            UserInput(vm, modifier)
+            UserInput(vm, modifier, req)
 
             vm.weather.value?.let { WeatherInfo(it, modifier) }
         }
@@ -54,8 +54,7 @@ fun Greeting(vm : WeatherViewModel, modifier: Modifier = Modifier, context: Cont
 }
 
 @Composable
-fun UserInput(vm: WeatherViewModel, modifier: Modifier = Modifier) {
-    val keyboardCtrl = LocalSoftwareKeyboardController.current
+fun UserInput(vm: WeatherViewModel, modifier: Modifier = Modifier, req:()->Unit) {
 
     Text(text = "State", color = Color.LightGray, modifier = modifier)
 
@@ -78,10 +77,7 @@ fun UserInput(vm: WeatherViewModel, modifier: Modifier = Modifier) {
 
     Spacer(modifier.height(20.dp))
     Button(modifier = modifier.fillMaxWidth(), shape = RoundedCornerShape(12.dp),
-        onClick = {
-            keyboardCtrl?.hide()
-            vm.reqWeather(vm.city.value, vm.selState.value)
-        }) {
+        onClick = { req() }) {
         Text(text = "Get weather")
     }
 
