@@ -30,7 +30,7 @@ class MainActivity : BaseActivity() {
         setContent {
             WeatherMvvmComposeTheme {
                 val keyboardCtrl = LocalSoftwareKeyboardController.current
-                Greeting(vm, modifier = Modifier.padding(1.dp)) {
+                MainScreen(vm, modifier = Modifier.padding(1.dp)) {
                     keyboardCtrl?.hide()
                     vm.reqWeather()
                 }

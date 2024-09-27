@@ -35,7 +35,7 @@ import com.example.weathermvvmcompose.data.weather.Weather
 import com.example.weathermvvmcompose.ui.theme.EditBack
 
 @Composable
-fun Greeting(vm : WeatherViewModel, modifier: Modifier = Modifier, req:()->Unit) {
+fun MainScreen(vm : WeatherViewModel, modifier: Modifier = Modifier, req:()->Unit) {
 
     Box(modifier = modifier.fillMaxSize()) {
         Column(modifier = modifier
