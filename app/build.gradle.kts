@@ -70,6 +70,9 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    // UnitTest - Mockito
+    testImplementation("org.mockito:mockito-core:2.22.0")
+
     // Jetpack Compose
     implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
     implementation("io.coil-kt:coil-compose:2.0.0-rc01")
