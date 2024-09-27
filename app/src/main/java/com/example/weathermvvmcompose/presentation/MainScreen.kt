@@ -37,7 +37,8 @@ import com.example.weathermvvmcompose.ui.theme.EditBack
 @Composable
 fun MainScreen(vm : WeatherViewModel, modifier: Modifier = Modifier, req:()->Unit) {
 
-    Box(modifier = modifier.fillMaxSize()) {
+    Box(modifier = modifier.fillMaxSize()
+        .padding(top = 25.dp, bottom = 45.dp, start = 0.dp, end = 0.dp)) {
         Column(modifier = modifier
             .fillMaxSize()
             .background(color = Color.White)

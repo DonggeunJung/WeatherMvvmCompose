@@ -7,7 +7,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.unit.dp
@@ -24,15 +26,18 @@ class MainActivity : BaseActivity() {
     @Inject
     lateinit var vm : WeatherViewModel
 
+    @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             WeatherMvvmComposeTheme {
-                val keyboardCtrl = LocalSoftwareKeyboardController.current
-                MainScreen(vm, modifier = Modifier.padding(1.dp)) {
-                    keyboardCtrl?.hide()
-                    vm.reqWeather()
+                Scaffold(modifier = Modifier.fillMaxSize()) {
+                    val keyboardCtrl = LocalSoftwareKeyboardController.current
+                    MainScreen(vm, modifier = Modifier.padding(1.dp)) {
+                        keyboardCtrl?.hide()
+                        vm.reqWeather()
+                    }
                 }
             }
         }
